@@ -16,8 +16,8 @@ public abstract class SnowFlake {
     int TYPE;
     double radius;
     double diameter;
-    double meltModifier = 0.05;
 
+    static final double MELT_MODIFIER = 0.05;
     static Random gen = new Random(System.currentTimeMillis());
     static int snowFall = 0; // number of SnowFlake created
     static List<Class<? extends MeltableSnowFlake>> snowflakeTypes = Arrays.asList(
@@ -27,6 +27,7 @@ public abstract class SnowFlake {
 
     public SnowFlake() {
         SnowFlake.snowFall++;
+        // TODO define diameter
         this.radius = this.diameter / 2;
     }
 
@@ -51,6 +52,7 @@ public abstract class SnowFlake {
         return this.radius;
     }
 
+    @Override
     public String toString() {
         return "Placeholder"; // TODO
     }

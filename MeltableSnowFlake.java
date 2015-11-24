@@ -9,7 +9,7 @@ public class MeltableSnowFlake extends SnowFlake {
 
     @Override
     public void melt() {
-        this.diameter /= this.diameter + this.TYPE;
+        this.diameter /= SnowFlake.MELT_MODIFIER + this.TYPE;
         this.radius = this.diameter / 2;
     }
 
