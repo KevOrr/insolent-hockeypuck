@@ -16,12 +16,16 @@ public abstract class SnowFlake {
 
     static Random gen = new Random(System.currentTimeMillis());
     static int snowFall = 0; // number of SnowFlake created
-    static ArrayList<Class<?>> snowflakeTypes = new ArrayList<Class<?>>();
+    static ArrayList<Class<? extends MeltableSnowFlake>> snowflakeTypes =
+            new ArrayList<Class<? extends MeltableSnowFlake>>();
 
     public SnowFlake() {
         SnowFlake.snowFall++;
         this.radius = this.diameter / 2;
-        snowflakeTypes.add(this.getClass());
+    }
+
+    public static MeltableSnowFlake makeRandomSnowflake() {
+        return new SimplePrism();
     }
 
     public int getType() {

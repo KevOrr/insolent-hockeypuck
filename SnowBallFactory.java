@@ -5,24 +5,22 @@
 
 package grouplab2;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class SnowBallFactory {
 
-    Random gen = new Random(System.currentTimeMillis());
+    static Random gen = new Random(System.currentTimeMillis());
 
     public static void main(String[] args) {
-        new SimplePrisms();
+        createSnowBall(25, 0, new ArrayList<MeltableSnowFlake>());
     }
 
-    private void createSnowBall(int desiredSize, int currentSize,
-                                ArrayList<MeltableSnowFlake> snowBall) {
+    private static void createSnowBall(int desiredSize, int currentSize, ArrayList<MeltableSnowFlake> snowBall) {
         if (currentSize < desiredSize) {
-            MeltableSnowFlake flake = SnowFlake.snowflakeTypes.get(gen.nextInt(SnowFlake.snowflakeTypes.size()));
-            //snowBall.add();
-            //createSnowBall(currentSize + 1, desiredSize)
+            snowBall.add(SnowFlake.makeRandomSnowflake());
+            createSnowBall(currentSize + 1, desiredSize, snowBall);
         }
     }
-
 }
