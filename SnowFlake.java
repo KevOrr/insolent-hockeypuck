@@ -5,8 +5,12 @@
 
 package grouplab2;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
+
+import grouplab2.flakes.SimplePrism;
+import grouplab2.flakes.SolidColumn;
 
 public abstract class SnowFlake {
     int TYPE;
@@ -16,8 +20,10 @@ public abstract class SnowFlake {
 
     static Random gen = new Random(System.currentTimeMillis());
     static int snowFall = 0; // number of SnowFlake created
-    static ArrayList<Class<? extends MeltableSnowFlake>> snowflakeTypes =
-            new ArrayList<Class<? extends MeltableSnowFlake>>();
+    static List<Class<? extends MeltableSnowFlake>> snowflakeTypes = Arrays.asList(
+        SimplePrism.class,
+        SolidColumn.class
+    );
 
     public SnowFlake() {
         SnowFlake.snowFall++;
@@ -25,7 +31,12 @@ public abstract class SnowFlake {
     }
 
     public static MeltableSnowFlake makeRandomSnowflake() {
-        return new SimplePrism();
+        try {
+            return snowflakeTypes.get(gen.nextInt(snowflakeTypes.size())).newInstance();
+        } catch (IllegalAccessException|InstantiationException e) {
+            System.out.println("Couldn't instantiate class: " + e.getLocalizedMessage());
+            return new SimplePrism();
+        }
     }
 
     public int getType() {
