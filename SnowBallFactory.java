@@ -15,7 +15,9 @@ public class SnowBallFactory {
 
     public static void main(String[] args) {
         ArrayList<MeltableSnowFlake> snowBall = createSnowBall(25, 0, new ArrayList<MeltableSnowFlake>());
-        System.out.println(snowBall);
+        for (int i=0; i<snowBall.size(); i++) {
+            System.out.println(snowBall.get(i));
+        }
     }
 
     private static ArrayList<MeltableSnowFlake> createSnowBall(int desiredSize, int currentSize, ArrayList<MeltableSnowFlake> snowBall) {
