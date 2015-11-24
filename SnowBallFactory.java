@@ -21,8 +21,8 @@ public class SnowBallFactory {
 
     private static ArrayList<MeltableSnowFlake> createSnowBall(int desiredSize, int currentSize, ArrayList<MeltableSnowFlake> snowBall) {
         if (currentSize < desiredSize) {
-            snowBall.add(SnowFlake.makeRandomSnowflake());
-            createSnowBall(currentSize + 1, desiredSize, snowBall);
+            snowBall.add(MeltableSnowFlake.makeRandomSnowflake());
+            createSnowBall(desiredSize, currentSize + 1, snowBall);
         }
         return snowBall;
     }

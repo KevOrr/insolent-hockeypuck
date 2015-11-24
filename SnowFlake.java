@@ -20,24 +20,11 @@ public abstract class SnowFlake {
     static final double MELT_MODIFIER = 0.05;
     static Random gen = new Random(System.currentTimeMillis());
     static int snowFall = 0; // number of SnowFlake created
-    static List<Class<? extends MeltableSnowFlake>> snowflakeTypes = Arrays.asList(
-        SimplePrism.class,
-        SolidColumn.class
-    );
 
     public SnowFlake() {
         SnowFlake.snowFall++;
         // TODO define diameter
         this.radius = this.diameter / 2;
-    }
-
-    public static MeltableSnowFlake makeRandomSnowflake() {
-        try {
-            return snowflakeTypes.get(gen.nextInt(snowflakeTypes.size())).newInstance();
-        } catch (IllegalAccessException|InstantiationException e) {
-            System.out.println("Couldn't instantiate class: " + e.getLocalizedMessage());
-            return new SimplePrism();
-        }
     }
 
     public int getType() {

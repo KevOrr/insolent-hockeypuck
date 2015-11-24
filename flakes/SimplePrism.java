@@ -8,5 +8,5 @@ package grouplab2.flakes;
 import grouplab2.MeltableSnowFlake;
 
 public class SimplePrism extends MeltableSnowFlake {
-    int TYPE = 1;
+    final int TYPE = 1;
 }
