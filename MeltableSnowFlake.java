@@ -18,12 +18,12 @@ public class MeltableSnowFlake extends SnowFlake {
 
     public static MeltableSnowFlake makeRandomSnowflake() {
         MeltableSnowFlake flake = null;
-        switch (gen.nextInt(35)) {
-        case 1:  flake = new SimplePrism();
-        case 2:  flake = new SolidColumn();
-        //case 3
-        // ...
-        default: flake = new SimplePrism(); // TODO remove this line
+        switch (gen.nextInt(35) + 1) {
+            case 1:  flake = new SimplePrism(); break;
+            case 2:  flake = new SolidColumn(); break;
+            //case 3
+            // ...
+            default: flake = new SimplePrism(); // TODO remove this line
         }
 
         return flake;

@@ -5,15 +5,11 @@
 
 package grouplab2;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
-import grouplab2.flakes.SimplePrism;
-import grouplab2.flakes.SolidColumn;
-
 public abstract class SnowFlake {
-    int TYPE;
+    protected int TYPE;
+    int id;
     double radius;
     double diameter;
 
@@ -23,8 +19,13 @@ public abstract class SnowFlake {
 
     public SnowFlake() {
         SnowFlake.snowFall++;
-        // TODO define diameter
+        this.id = snowFall;
+        this.diameter = gen.nextDouble() * (gen.nextInt(3) + 8);
         this.radius = this.diameter / 2;
+    }
+
+    public int getId() {
+        return this.id;
     }
 
     public int getType() {
@@ -41,7 +42,8 @@ public abstract class SnowFlake {
 
     @Override
     public String toString() {
-        return "Placeholder"; // TODO
+        return String.format("%3d %s(type=%d, diameter=%f)", this.id,
+                this.getClass().getSimpleName(), this.TYPE, this.diameter);
     }
 
     public abstract void melt();
