@@ -8,5 +8,8 @@ package grouplab2.flakes;
 import grouplab2.MeltableSnowFlake;
 
 public class SolidColumn extends MeltableSnowFlake {
-    final int TYPE = 2;
+    public SolidColumn() {
+        super();
+        this.TYPE = 2;
+    }
 }
