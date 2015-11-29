@@ -5,8 +5,7 @@
 
 package grouplab2;
 
-import grouplab2.flakes.SimplePrism;
-import grouplab2.flakes.SolidColumn;
+import grouplab2.flakes.*;
 
 public class MeltableSnowFlake extends SnowFlake {
 
@@ -17,16 +16,17 @@ public class MeltableSnowFlake extends SnowFlake {
     }
 
     public static MeltableSnowFlake makeRandomSnowflake() {
-        MeltableSnowFlake flake = null;
         switch (gen.nextInt(35) + 1) {
-            case 1:  flake = new SimplePrism(); break;
-            case 2:  flake = new SolidColumn(); break;
-            //case 3
-            // ...
-            default: flake = new SimplePrism(); // TODO remove this line
+            case 1:  return new SimplePrism();
+            case 2:  return new SolidColumn();
+            case 3:  return new Sheath();
+            case 4:  return new ScrollsOnPlate();
+            case 5:  return new TriangularForm();
+            case 6:  return new HexagonalPlate();
+            case 7:  return new HollowColumn();
+            // case ...
+            default: return new MeltableSnowFlake(); //Unreachable, but won't compile without
         }
-
-        return flake;
     }
 
 }
