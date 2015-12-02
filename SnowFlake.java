@@ -9,13 +9,13 @@ import java.util.Random;
 
 public abstract class SnowFlake {
     protected int TYPE;
-    int id;
-    double radius;
-    double diameter;
+    private int id;
+    protected double radius;
+    protected double diameter;
 
     static final double MELT_MODIFIER = 0.05;
-    static Random gen = new Random(System.currentTimeMillis());
-    static int snowFall = 0; // number of SnowFlake created
+    private static Random gen = new Random(System.currentTimeMillis());
+    private static int snowFall = 0; // number of SnowFlake created
 
     public SnowFlake() {
         SnowFlake.snowFall++;

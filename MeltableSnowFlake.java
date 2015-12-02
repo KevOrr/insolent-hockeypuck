@@ -6,9 +6,13 @@
 
 package grouplab2;
 
+import java.util.Random;
+
 import grouplab2.flakes.*;
 
 public class MeltableSnowFlake extends SnowFlake {
+
+    private static Random gen = new Random(System.currentTimeMillis());
 
     @Override
     public void melt() {
@@ -53,7 +57,7 @@ public class MeltableSnowFlake extends SnowFlake {
             case 33: return new HollowPlate();
             case 34: return new CrossedPlate();
             case 35: return new Graupel();
-            default: return new MeltableSnowFlake(); //Unreachable, but won't compile without
+            default: return null; //Unreachable, but won't compile without
         }
     }
 
