@@ -44,7 +44,7 @@ public class MeltableSnowFlake extends SnowFlake {
             case 20: return new RadiatingDendrite();
             case 21: return new SimpleStar();
             case 22: return new SimpleNeedle();
-            case 23: return new CappedBullets();
+            case 23: return new CappedBullet();
             case 24: return new TwinColumn();
             case 25: return new Irregular();
             case 26: return new StellarDendrite();
